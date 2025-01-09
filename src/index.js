@@ -1,6 +1,9 @@
 import "./style.css";
+import header from "./components/header";
 
-const content = document.querySelector(".product-container");
+const productContainer = document.querySelector(".product-container");
+
+header();
 
 // Nome do Produto
 const nameLabel = document.createElement("label");
@@ -48,19 +51,19 @@ newProductBtn.className = "new-product-button";
 newProductBtn.textContent = "Adicionar produto";
 
 // Adiciona os elementos ao container
-content.appendChild(nameLabel);
-content.appendChild(nameInput);
+productContainer.appendChild(nameLabel);
+productContainer.appendChild(nameInput);
 
-content.appendChild(descriptionLabel);
-content.appendChild(descriptionInput);
+productContainer.appendChild(descriptionLabel);
+productContainer.appendChild(descriptionInput);
 
-content.appendChild(valueLabel);
-content.appendChild(valueInput);
+productContainer.appendChild(valueLabel);
+productContainer.appendChild(valueInput);
 
-content.appendChild(availableLabel);
-content.appendChild(availableInput);
+productContainer.appendChild(availableLabel);
+productContainer.appendChild(availableInput);
 
-content.appendChild(newProductBtn);
+productContainer.appendChild(newProductBtn);
 
 // {
 //   - Descrição do produto - campo de texto
