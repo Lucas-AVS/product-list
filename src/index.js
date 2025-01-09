@@ -36,14 +36,48 @@ valueInput.id = "value-input";
 valueInput.placeholder = "R$:00,00";
 
 // Disponível para Venda
-const availableLabel = document.createElement("label");
-availableLabel.textContent = "Disponível para venda?";
-availableLabel.htmlFor = "available-input";
+const radioContainer = document.createElement("div");
+radioContainer.className = "radio-container";
+
+const radioTitle = document.createElement("a");
+radioTitle.textContent = "Disponível para venda?";
+radioContainer.appendChild(radioTitle);
+
+// radio button "Sim"
+const availableRow = document.createElement("div");
+availableRow.className = "radio-row";
 
 const availableInput = document.createElement("input");
-availableInput.className = "available-input";
-availableInput.id = "available-input";
+availableInput.name = "radio-button";
+availableInput.id = "available";
 availableInput.type = "radio";
+availableInput.checked = true;
+
+const availableLabel = document.createElement("label");
+availableLabel.textContent = "Sim";
+availableLabel.htmlFor = "available";
+
+availableRow.appendChild(availableInput);
+availableRow.appendChild(availableLabel);
+
+// adio button "Não"
+const notAvailableRow = document.createElement("div");
+notAvailableRow.className = "radio-row";
+
+const notAvailableInput = document.createElement("input");
+notAvailableInput.name = "radio-button";
+notAvailableInput.id = "not-available";
+notAvailableInput.type = "radio";
+
+const notAvailableLabel = document.createElement("label");
+notAvailableLabel.textContent = "Não";
+notAvailableLabel.htmlFor = "not-available";
+
+notAvailableRow.appendChild(notAvailableInput);
+notAvailableRow.appendChild(notAvailableLabel);
+
+radioContainer.appendChild(availableRow);
+radioContainer.appendChild(notAvailableRow);
 
 // Botão de Adicionar Produto
 const newProductBtn = document.createElement("button");
@@ -60,13 +94,6 @@ productContainer.appendChild(descriptionInput);
 productContainer.appendChild(valueLabel);
 productContainer.appendChild(valueInput);
 
-productContainer.appendChild(availableLabel);
-productContainer.appendChild(availableInput);
+productContainer.appendChild(radioContainer);
 
 productContainer.appendChild(newProductBtn);
-
-// {
-//   - Descrição do produto - campo de texto
-//   - Valor do produto - campo de valor
-//   - Disponível para venda - campo com 2 opções: sim / não
-// }
