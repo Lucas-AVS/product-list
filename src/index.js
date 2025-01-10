@@ -98,6 +98,45 @@ newProductBtn.className = "new-product-button";
 newProductBtn.textContent = "Adicionar Produto";
 newProductBtn.type = "submit";
 
+// Recupera os produtos do localStorage
+let products = [];
+const fetchProducts = localStorage.getItem("products");
+
+if (fetchProducts) {
+  products = JSON.parse(fetchProducts); // Faz o parse apenas se existir algo no localStorage
+}
+
+// Atualiza a exibição inicial da lista de produtos
+list(products);
+
+// Evento de submissão do formulário
+productForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = nameInput.value.trim();
+  const description = descriptionInput.value.trim();
+  const price = parseFloat(valueInput.value.replace(",", "."));
+  const available = availableInput.checked;
+
+  if (!name || !description || isNaN(price)) {
+    alert("Preencha todos os campos corretamente.");
+    return;
+  }
+
+  const newProduct = { name, description, price, available };
+
+  const fetchProducts = localStorage.getItem("products");
+
+  let products = fetchProducts ? JSON.parse(fetchProducts) : [];
+
+  products.push(newProduct);
+
+  localStorage.setItem("products", JSON.stringify(products));
+
+  list();
+  productForm.reset();
+});
+
 // Adiciona os elementos ao form
 productForm.appendChild(nameLabel);
 productForm.appendChild(nameInput);

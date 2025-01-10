@@ -1,26 +1,25 @@
 export default function list() {
   const table = document.querySelector(".product-table");
 
-  const products = [
-    {
-      name: "Tesoura",
-      description: "Tesoura infantil, para crianças a partir de 5 anos",
-      price: 8,
-      available: true,
-    },
-    {
-      name: "Monitor Padrão",
-      description: "Monitor básico com cabo VGA",
-      price: 300,
-      available: true,
-    },
-    {
-      name: "Fone de Ouvido",
-      description: "Fone básico sem marca, modelo de entrada",
-      price: 20,
-      available: false,
-    },
-  ];
+  const fetchProducts = localStorage.getItem("products");
+  let products = [];
+
+  if (fetchProducts) {
+    products = JSON.parse(fetchProducts);
+  }
+
+  if (products.length === 0) {
+    table.innerHTML = `
+        <tr>
+          <td colspan="2">
+            <p>
+              Sem produtos disponíveis, por favor cadastre um produto na aba "Cadastro de Produtos".
+            </p>
+          </td>
+        </tr>
+      `;
+    return;
+  }
 
   // Ordena os produtos pelo menor preço
   const orderedProducts = products.sort((a, b) => a.price - b.price);
@@ -28,7 +27,7 @@ export default function list() {
   // Limpa a lista antes de renderizar
   table.innerHTML = "";
 
-  // Tabela
+  // tabela
   const thead = document.createElement("thead");
   thead.innerHTML = `
       <tr>
@@ -48,13 +47,13 @@ export default function list() {
     nameCell.className = "product-name";
     nameCell.textContent = product.name;
 
-    // Preço
+    // Preço formatado para Real (R$)
     const priceCell = document.createElement("td");
     priceCell.className = "product-price";
-    priceCell.textContent = `${product.price.toLocaleString("pt-br", {
+    priceCell.textContent = product.price.toLocaleString("pt-br", {
       style: "currency",
       currency: "BRL",
-    })}`;
+    });
 
     row.appendChild(nameCell);
     row.appendChild(priceCell);
