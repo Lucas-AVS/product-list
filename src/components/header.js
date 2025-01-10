@@ -1,3 +1,5 @@
+import changePage from "../functions/changePage";
+
 export default function header() {
   const header = document.querySelector("header");
 
@@ -29,4 +31,7 @@ export default function header() {
   logo.appendChild(logoImg);
   header.appendChild(logo);
   header.appendChild(nav);
+
+  cadastroBtn.addEventListener("click", () => changePage("Form"));
+  listaBtn.addEventListener("click", () => changePage("List"));
 }
