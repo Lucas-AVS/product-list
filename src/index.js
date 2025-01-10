@@ -135,6 +135,7 @@ productForm.addEventListener("submit", (event) => {
 
   list();
   productForm.reset();
+  availableInput.checked = true;
 });
 
 // Adiciona os elementos ao form
