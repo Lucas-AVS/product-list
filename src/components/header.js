@@ -20,6 +20,7 @@ export default function header() {
   const cadastroBtn = document.createElement("button");
   cadastroBtn.className = "nav-button";
   cadastroBtn.textContent = "Cadastro de Produtos";
+  cadastroBtn.id = "active";
 
   const listaBtn = document.createElement("button");
   listaBtn.className = "nav-button";

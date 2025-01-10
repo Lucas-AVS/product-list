@@ -145,6 +145,12 @@
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+
+  .nav-button#active {
+    background-color: #0056b3;
+    color: white;
+    border: 1px solid #0056b3;
+  }
   
   .nav-button:hover {
     background-color: #0056b3;
