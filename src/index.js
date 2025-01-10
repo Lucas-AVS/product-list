@@ -1,9 +1,10 @@
 import "./style.css";
 import header from "./components/header";
-
-const productContainer = document.querySelector(".product-container");
+import list from "./list";
 
 header();
+const productForm = document.querySelector(".product-form");
+list();
 
 // Nome do Produto
 const nameLabel = document.createElement("label");
@@ -97,16 +98,16 @@ newProductBtn.className = "new-product-button";
 newProductBtn.textContent = "Adicionar Produto";
 newProductBtn.type = "submit";
 
-// Adiciona os elementos ao container
-productContainer.appendChild(nameLabel);
-productContainer.appendChild(nameInput);
+// Adiciona os elementos ao form
+productForm.appendChild(nameLabel);
+productForm.appendChild(nameInput);
 
-productContainer.appendChild(descriptionLabel);
-productContainer.appendChild(descriptionInput);
+productForm.appendChild(descriptionLabel);
+productForm.appendChild(descriptionInput);
 
-productContainer.appendChild(valueLabel);
-productContainer.appendChild(valueInput);
+productForm.appendChild(valueLabel);
+productForm.appendChild(valueInput);
 
-productContainer.appendChild(availabilityFieldset);
+productForm.appendChild(availabilityFieldset);
 
-productContainer.appendChild(newProductBtn);
+productForm.appendChild(newProductBtn);
