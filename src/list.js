@@ -64,7 +64,7 @@ export default function list() {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Excluir";
     deleteButton.className = "delete-button";
-    deleteButton.addEventListener("click", () => deleteProduct(index));
+    deleteButton.addEventListener("click", () => deleteProduct(product.id));
     actionsCell.appendChild(deleteButton);
 
     row.appendChild(nameCell);
@@ -79,15 +79,15 @@ export default function list() {
 }
 
 // Função para deletar um produto com confirmação
-function deleteProduct(index) {
+function deleteProduct(id) {
   const confirmation = confirm("Tem certeza que deseja excluir este produto?");
   if (confirmation) {
     // Recupera os produtos do localStorage
     const fetchProducts = localStorage.getItem("products");
     let products = fetchProducts ? JSON.parse(fetchProducts) : [];
 
-    // Remove o produto pelo índice
-    products.splice(index, 1);
+    // Remove o produto pelo ID
+    products = products.filter((product) => product.id !== id);
 
     // Atualiza o localStorage
     localStorage.setItem("products", JSON.stringify(products));

@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import "./style.css";
 import header from "./components/header";
 import list from "./list";
@@ -114,6 +115,7 @@ productForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const name = nameInput.value.trim();
+  const id = uuidv4();
   const description = descriptionInput.value.trim();
   const price = parseFloat(valueInput.value.replace(",", "."));
   const available = availableInput.checked;
@@ -123,7 +125,7 @@ productForm.addEventListener("submit", (event) => {
     return;
   }
 
-  const newProduct = { name, description, price, available };
+  const newProduct = { name, id, description, price, available };
 
   const fetchProducts = localStorage.getItem("products");
 
