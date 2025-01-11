@@ -1,4 +1,5 @@
 import changePage from "../functions/changePage";
+import logoPlaceHolder from "../assets/logo-placeholder.png";
 
 export default function header() {
   const header = document.querySelector("header");
@@ -10,7 +11,7 @@ export default function header() {
 
   const logoImg = document.createElement("img");
   logoImg.className = "logo-img";
-  logoImg.src = "../src/assets/logo-placeholder.png";
+  logoImg.src = logoPlaceHolder;
   logoImg.alt = "Logo do Sistema";
 
   // navbar
